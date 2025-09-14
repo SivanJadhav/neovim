@@ -12,6 +12,8 @@ map("n", "<leader>sh", vim.cmd.split, opts)
 map("n", "<leader>sc", vim.cmd.close, opts)
 map("n", "<leader>rn", function() vim.opt.relativenumber = not vim.opt.relativenumber:get() end, opts)
 map("n", "<leader>ch", vim.cmd.noh, opts)
+vim.api.nvim_set_keymap('i', '<C-l>', '<cmd>lua require("luasnip").expand_or_jump()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('s', '<C-l>', '<cmd>lua require("luasnip").expand_or_jump()<CR>', { noremap = true, silent = true })
 
 -- Telescope: Fuzzy Finder Settings
 map("n", "<leader>pe", "<cmd>Telescope find_files<cr>", opts)
@@ -54,4 +56,3 @@ end
 return {
   on_attach = on_attach
 }
-
