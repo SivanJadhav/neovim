@@ -15,7 +15,7 @@ return {
       -- Mason setup
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "clangd", "rust_analyzer", "cmake" },
+        ensure_installed = { "clangd", "rust_analyzer" },
         automatic_installation = true,
       })
 
