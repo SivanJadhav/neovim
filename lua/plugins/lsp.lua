@@ -21,13 +21,12 @@ return {
 
       -- Capabilities (for autocompletion)
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
       local mymaps = require("sivanthechad.keymaps")
 
       -- LSP servers
       local servers = { "clangd", "rust_analyzer", "cmake" }
       for _, server in ipairs(servers) do
-        lspconfig[server].setup({
+        vim.lsp.config(server, {
           on_attach = mymaps.on_attach,
           capabilities = capabilities,
         })
@@ -37,11 +36,11 @@ return {
       local cmp = require("cmp")
       cmp.setup({
         mapping = cmp.mapping.preset.insert({
-          ["<C-Space>"] = cmp.mapping.complete(),         -- trigger completion
+          ["<C-Space>"] = cmp.mapping.complete(),            -- trigger completion
           ["<CR>"] = cmp.mapping.confirm({ select = true }), -- confirm
-          ["<C-n>"] = cmp.mapping.select_next_item(),     -- next item
-          ["<C-p>"] = cmp.mapping.select_prev_item(),     -- prev item
-          ["<C-e>"] = cmp.mapping.abort(),                -- close menu
+          ["<C-n>"] = cmp.mapping.select_next_item(),        -- next item
+          ["<C-p>"] = cmp.mapping.select_prev_item(),        -- prev item
+          ["<C-e>"] = cmp.mapping.abort(),                   -- close menu
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
