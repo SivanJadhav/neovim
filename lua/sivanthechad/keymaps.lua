@@ -7,9 +7,11 @@ local opts = { noremap = true, silent = true }
 
 -- Some Remaps
 map("n", "<leader>pv", vim.cmd.Ex, opts)
+
 map("n", "<leader>sv", vim.cmd.vsplit, opts)
 map("n", "<leader>sh", vim.cmd.split, opts)
 map("n", "<leader>sc", vim.cmd.close, opts)
+
 map("n", "<leader>rn", function() vim.opt.relativenumber = not vim.opt.relativenumber:get() end, opts)
 map("n", "<leader>ch", vim.cmd.noh, opts)
 
@@ -45,7 +47,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
   -- Show diagnostics (line-level)
-  vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+  vim.keymap.set("n", "<leader>[k", vim.diagnostic.open_float, opts)
 
   -- Format buffer (if server supports it)
   vim.keymap.set("n", "<leader>mt", function()

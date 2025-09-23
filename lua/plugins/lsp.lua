@@ -36,7 +36,7 @@ return {
       local cmp = require("cmp")
       cmp.setup({
         mapping = cmp.mapping.preset.insert({
-          ["<C-Space>"] = cmp.mapping.complete(),            -- trigger completion
+          ["<C-Space>"] = cmp.mapping.complete(),            -- manual trigger (keep for safety)
           ["<CR>"] = cmp.mapping.confirm({ select = true }), -- confirm
           ["<C-n>"] = cmp.mapping.select_next_item(),        -- next item
           ["<C-p>"] = cmp.mapping.select_prev_item(),        -- prev item
@@ -47,7 +47,11 @@ return {
           { name = "buffer" },
           { name = "path" },
         }),
+        completion = {
+          autocomplete = { cmp.TriggerEvent.TextChanged }, -- auto popup as you type
+          completeopt = 'menu,menuone,noinsert',          -- nice behavior for popup menu
+        },
       })
-    end,
+    end, -- <--- closes config = function()
   },
-}
+} -- <--- closes the return table
